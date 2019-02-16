@@ -21,6 +21,15 @@ int main(int argc, char* argv[]) {
         cerr << "Gebruik: ./caesarCijfer.exe 'BESTAND of WOORD' 'ROTATIE'" << endl;
         return 1;
     }
+    if(argc == 2 ) {
+        while(!cin.eof()) {
+            getline(cin, sentence);
+            for (unsigned int i = 0; i < sentence.length(); i++) {
+                if (sentence[i] != ' ' && sentence[i] != ',' && sentence[i] != '.') {
+                    newSentence.push_back(char(int(sentence[i]) + stoi(string(argv[1]))));
+                } else {
+                    newSentence.push_back(sentence[i]);
+                }
             }
         }
     } else if(argc == 3){
