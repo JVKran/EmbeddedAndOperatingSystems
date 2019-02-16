@@ -18,17 +18,25 @@ int main(int argc, char* argv[]) {
     string newSentence;
     string sentence;
     if (argc < 2) {
-        cerr << "Gebruik: ./test.exe 'BESTAND of WOORD' 'ROTATIE'" << endl;
+        cerr << "Gebruik: ./caesarCijfer.exe 'BESTAND of WOORD' 'ROTATIE'" << endl;
         return 1;
     }
     if(argc == 2) {
         getline(cin, sentence);
         for (unsigned int i = 0; i < sentence.length(); i++) {
-            newSentence.push_back(char(int(sentence[i]) + stoi(string(argv[1]))));
+            if(sentence[i] != ' ' && sentence[i] != ',' && sentence[i] != '.') {
+                newSentence.push_back(char(int(sentence[i]) + stoi(string(argv[1]))));
+            } else {
+                newSentence.push_back(sentence[i]);
+            }
         }
     } else if(argc == 3){
         for(unsigned int i = 0; i < string(argv[1]).length(); i++){
-            newSentence.push_back(char(int(string(argv[1])[i])+stoi(string(argv[2]))));
+            if(string(argv[1])[i] != ' ' && string(argv[1])[i] != ',' && string(argv[1])[i] != '.') {
+                newSentence.push_back(char(int(string(argv[1])[i]) + stoi(string(argv[2]))));
+            } else {
+                newSentence.push_back(string(argv[1])[i]);
+            }
         }
     }
     cout << newSentence;
