@@ -56,7 +56,16 @@ int main(){
 }
 
 void new_file() {
-	cout << " NEW ";
+	string inputFilename;
+	const char* filename;
+	strint inputContent;
+	const char* content;
+	getline(cin, inputFilename, inputContent);
+	filename = inputFIlename.c_str();
+	content = inputContent.c_str();
+	int creat(filename, S_IWGRP);
+	int open(filename, S_IWGRP);
+	int write(0,content, content.length());
 }
 
 void list(){
