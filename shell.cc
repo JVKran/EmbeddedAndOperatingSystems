@@ -15,6 +15,7 @@ using std::getline;
 using std::endl;
 using std::ifstream;
 using std::ofstream;
+using std::cin;
 
 string prompt;
 int argCounter;
@@ -55,14 +56,7 @@ int main(){
 }
 
 void new_file() {
-    int pid = fork();
-    if (pid == 0){
-        char *args[] = {"/bin/ls","-r", "-t", "-l", (char *) 0 };
-        execv("/bin/ls", args);
-    }else{
-        int exit_status;
-        wait(&exit_status);
-    }
+	cout << " NEW ";
 }
 
 void list(){
@@ -70,7 +64,8 @@ void list(){
     cout << prompt;
     int pid = fork();
     if(pid == 0){
-        execv("ls");
+	char *args[] = {(char*) "/bin/ls", (char*) "-la", (char*) 0};
+        execv("/bin/ls",args);
     } else {
         int exit_status;
         wait(&exit_status);
@@ -79,11 +74,25 @@ void list(){
 }
 
 void find(){
-    cout << "FIND" << endl;
-    cout << prompt;
+    int pid = fork();
+    if(pid == 0){
+	char *args[] = {(char*) "/usr/bin/find", (char*) ".", (char*) 0};
+        execv("/usr/bin/find",args);
+    } else {
+        int exit_status;
+        wait(&exit_status);
+    }
+   cout << prompt;
 }
 
 void python(){
-    cout << "PYTHON" << endl;
-    cout << prompt;
+    int pid = fork();
+    if(pid == 0){
+	char *args[] = {(char*) "/usr/bin/python", (char*) 0};
+        execv("/usr/bin/python",args);
+    } else {
+        int exit_status;
+        wait(&exit_status);
+    }
+   cout << prompt;
 }
