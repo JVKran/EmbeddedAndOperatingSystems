@@ -89,14 +89,36 @@ void list(){
 }
 
 void find(){
+    cout << "Te zoeken: ";
+    string search;
+    getline(cin, search);
+    const char* searchString = search.c_str();
+    int fd[2];
     int pid = fork();
     if(pid == 0){
-	char *args[] = {(char*) "/usr/bin/find", (char*) ".", (char*) 0};
-        execv("/usr/bin/find",args);
+	int fd[2];
+	pipe(fd);
+	int cid = fork();
+	if(cid > 0){
+		close(fd[0]);
+		close(STDOUT_FILENO);
+		dup(fd[1]);
+		close(fd[1]);
+		char *args[] = {(char*) "/usr/bin/find", (char*) ".", (char*) 0};
+		execv("/usr/bin/find",args);
+	} else {
+		close(fd[1]);
+		close(STDIN_FILENO);
+		dup(fd[0]);
+		close(fd[0]);
+		char *args[] = {(char*) "/bin/grep", (char*) searchString, (char*) 0};
+		execv("/bin/grep",args);
+	}
     } else {
         int exit_status;
         wait(&exit_status);
     }
+    sleep(1);
    cout << prompt;
 }
 
