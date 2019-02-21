@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <sys/stat.h>
+#include <string.h>
 
 using std::string;
 using std::cout;
@@ -56,21 +57,26 @@ int main(){
 }
 
 void new_file() {
-	string inputFilename;
-	const char* filename;
-	strint inputContent;
-	const char* content;
-	getline(cin, inputFilename, inputContent);
-	filename = inputFIlename.c_str();
-	content = inputContent.c_str();
-	int creat(filename, S_IWGRP);
-	int open(filename, S_IWGRP);
-	int write(0,content, content.length());
+	cout << "Filename: ";
+	string file;
+	getline(cin, file);
+	const char* filename = file.c_str();
+	cout << "Content: ";
+	string con;
+	getline(cin, con);
+	const char* content = con.c_str();
+	int sz;
+	int fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if(fd < 0){
+		perror(" r1");
+		exit(1);
+	}
+	sz = write(fd, content, strlen(content));
+	close(fd);
+	cout << prompt;
 }
 
 void list(){
-    cout << "LS" << endl;
-    cout << prompt;
     int pid = fork();
     if(pid == 0){
 	char *args[] = {(char*) "/bin/ls", (char*) "-la", (char*) 0};
@@ -79,7 +85,7 @@ void list(){
         int exit_status;
         wait(&exit_status);
     }
-
+    cout << prompt;
 }
 
 void find(){
