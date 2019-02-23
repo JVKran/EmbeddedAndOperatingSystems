@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+FILES=$1/
+EXTENSION=*.$2
+counter=0
+for i in $(ls $FILES$EXTENSION); do
+	echo $i
+	let "counter += 1"
+echo $2 komt $counter keer voor.
+done
