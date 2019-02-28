@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+touch $1.txt
+echo Gebruikersnaam: 
+read username
+if [ "$username" = "" ]; then
+	$username=$(whoami)
+fi
+
+while true; do
+	echo Wachtwoord:
+	read curPassword
+	echo Herhaal wachtwoord:
+	read newPassword
+	if [ "$newPassword" = "$curPassword" ]; then
+		echo "$username" "$(echo -n "$newPassword" | md5sum)">> $1.txt
+		break
+	fi
+done
+
+echo Hallo "$username"! Uw account is opgeslagen in het opgegeven bestand.
