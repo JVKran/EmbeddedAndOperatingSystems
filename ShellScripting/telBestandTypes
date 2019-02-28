@@ -1,9 +1,23 @@
 #! /usr/bin/env bash
-FILES=$1/
-EXTENSION=*.$2
-counter=0
-for i in $(ls $FILES$EXTENSION); do
-	echo $i
-	let "counter += 1"
-echo $2 komt $counter keer voor.
+
+counter2=0
+counter3=0
+counter4=0
+counter5=0
+counter6=0
+counter7=0
+list="$(ls -als "$1")"
+for i in $list; do
+	case $i in 
+		*$2*) (( counter2++ ));;
+		*$3*) (( counter3++ ));;
+		*$4*) (( counter4++ ));;
+		*$5*) (( counter5++ ));;
+		*$6*) (( counter6++ ));;
+		*$7*) (( counter7++ ));;
+		*) ;;
+	esac
+done
+for (( i=2; i<$#; i++ )); do
+	eval "echo \"\$$i\" komt \"\$counter$i\" keer voor."
 done
