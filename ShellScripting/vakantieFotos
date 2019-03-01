@@ -6,3 +6,4 @@ for i in $list; do						# Loop door de gevonden bestanden
 	cp $i Afbeeldingen/Vakantie				# Kopier de bestanden naar Afbeeldingen/Vakantie
 done								# Eindig loop
 echo Voltooid!							# Bericht gebruiker over voltooing
+

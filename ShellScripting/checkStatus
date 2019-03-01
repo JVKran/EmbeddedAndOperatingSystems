@@ -10,4 +10,6 @@ for i in $list; do						# Loop door de lijst
 	else
 		echo "$2" "$i" ::::::: failed >> logfile.txt	# Anders is het commando mislukt.
 	fi							# Eindig if-statement
-done								# Eindig for-loop
+done
+								# Eindig for-loop
+								

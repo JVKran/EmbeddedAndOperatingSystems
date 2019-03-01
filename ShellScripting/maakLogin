@@ -18,3 +18,4 @@ while true; do								# Start oneindige while-loop
 done									# Eindig loop
 
 echo Hallo "$username"! Uw account is opgeslagen in het opgegeven bestand.
+

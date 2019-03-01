@@ -22,3 +22,4 @@ done						# Eindig loop
 for (( i=2; i<=$#; i++ )); do			# Zolang i kleiner is dan het aantal meegegeven argumenten
 	eval "echo \"\$$i\" komt \"\$counter$i\" keer voor."	# Echo dan hoevaak het meegegeven argument voorkomt in de meegeven directory
 done								# Eval evalueert de gegeven expressie voordat de variabelen worden opgevraagd. Zodoende gebruik ik de counter voor een deel van de variabelenaam.
+

@@ -7,3 +7,4 @@ for i in $list; do					# Loop door de lijst
 							# ${i//jpg/png} vervangt in $i jpg door png
 done
 echo Geconverteerd!
+
