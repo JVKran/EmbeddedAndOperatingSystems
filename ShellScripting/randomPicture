@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
-list="$(ls $1)"
-length="$(find $1 -maxdepth 1 -type f -not -name 't_*' | wc -l)"
-arr=($list)
-rand=$(( ( RANDOM % $length ) + 1 ))
-randomPos=${arr[$rand]}
+list="$(ls $1)"								# Maak een lijst aan met alle bestanden in de opgegeven directory
+length="$(find $1 -maxdepth 1 -type f -not -name 't_*' | wc -l)"	# Tel hoeveel bestanden er zich bevinden in de opgegeven map
+arr=($list)								# Maak van de lijst een itereerbare array
+rand=$(( ( RANDOM % $length ) + 1 ))					# Genereer een random getal tussen 1 en de hoeveelheid bestanden in de meegegeven map
+randomPos=${arr[$rand]}							# Kies een willekeurig bestandspad
 for i in $list; do
-	if [ "$i" = "$randomPos" ]; then
-		display $1$i
-		echo $1$i
-	fi
-done
+	if [ "$i" = "$randomPos" ]; then				# Als het huidig geselecteerde nummer gelijk is aan het random nummer
+		display $1$i						# open dan die afbeelding op dat bestandspad
+		echo $1$i						# En geef het bestandspad weer in de terminal
+	fi								# Eindig het if-statement
+done									# Eindig de for-loop
+		
