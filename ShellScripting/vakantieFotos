@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-mkdir -p Afbeeldingen/Vakantie
-list="$(find "$1"/Afbeeldingen -regex ".*\.\(jpg\|png\)" | grep vakantie)"
-for i in $list; do
-	cp $i Afbeeldingen/Vakantie
-done
-echo Gekopieerd!
+mkdir -p Afbeeldingen/Vakantie 					# Maak de mappen Afbeeldingen/Vakantie aan als deze niet bestaan
+list="$(find "$1" -regex ".*\.\(jpg\|png\)" | grep vakantie)" 	# Zoek alle bestanden waarvan de bestandsnaam .jpg en .png bevat en grep vervolgens op het woord 'vakantie'
+for i in $list; do						# Loop door de gevonden bestanden
+	cp $i Afbeeldingen/Vakantie				# Kopier de bestanden naar Afbeeldingen/Vakantie
+done								# Eindig loop
+echo Voltooid!							# Bericht gebruiker over voltooing
