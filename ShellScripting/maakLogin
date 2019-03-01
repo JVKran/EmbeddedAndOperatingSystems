@@ -3,7 +3,7 @@
 touch $1.txt					# Maak bestand aan met meegegeven bestandsnaam
 read -p "Gebruikersnaam: " username		# Vraag om de gebruikersnaam en sla deze op in $username
 if [ "$username" = "" ]; then			# Als er niks is ingevoerd
-	$username=$(whoami)			# Gebruik dan de huidige user
+	username="$(whoami)"			# Gebruik dan de huidige user
 fi
 
 while true; do								# Start oneindige while-loop
@@ -12,10 +12,13 @@ while true; do								# Start oneindige while-loop
 	read -s -t 15 -p "Herhaal wachtwoord:" newPassword		# Vraag om wacthwoord te herhalen en sla het herhaalde wachtwoord op in $newPassword
 	echo								# \n
 	if [ "$newPassword" = "$curPassword" ]; then			# Als de ingevoerde wachtwoorden overeenkomen
-		echo "$username" "$(echo -n "$newPassword" | md5sum)">> $1.txt	# Hash het wachtword en sla deze, samen met de gebruikersnaam, op in het aangemaakte bestand
-		break							# Break uit de while-loop
+		if (( ${#curPassword} >= 8 )) && [[ $curPassword =~ [0-9]  ]] && [[ $curPassword =~ [a-z] ]] && [[ $curPassword =~ [A-Z] ]]; then
+			echo "$username" "$(echo -n "$newPassword" | md5sum)">> $1.txt 	# Hash het wachtword en sla deze, samen met de gebruikersnaam, op in het aangemaakte bestand
+			break								# Break uit de while-loop
+		else
+			echo Wachtwoord moet minimaal 1 hoofdletter, kleine letter en cijfer bevatten en moet minimaal 8 tekens lang zijn! Binnen 15 seconden!
+		fi
 	fi								# Eindig if statement
 done									# Eindig loop
 
 echo Hallo "$username"! Uw account is opgeslagen in het opgegeven bestand.
-
