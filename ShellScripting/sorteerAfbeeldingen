@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir -p Afbeeldingen 				# Maak directory Afbeeldingen aan
+mkdir -p Afbeeldingen 				# Maak directory Afbeeldingen aan als deze niet bestaat
 list="$(find "$1" -regex ".*\.\(jpg\|png\)")"	# Zoek naar alle bestanden waarvan de bestandsnaam eindigt op .jpg of .png
 for i in $list; do				# Loop door de gevonden bestanden
 	cp $i Afbeeldingen			# En kopieer deze naar Afbeeldingen
