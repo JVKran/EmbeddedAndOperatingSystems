@@ -73,7 +73,7 @@ void new_file() {
 		perror(" r1");
 		exit(1);
 	}
-	sz = write(fd, content, strlen(content));
+	syscall(SYS_write(), fd, content, strlen(content));
 	close(fd);
 	cout << prompt;
 }
