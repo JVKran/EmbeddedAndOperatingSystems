@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 touch logfile.txt						# Maak een logbestand aan
-
+echo "Statussen van commando's: " > logfile.txt			# Leeg het logbestand
 list="$(ls $1)"							# Maak een lijst bestaande uit alle bestanden in het meegegeven directory
 for i in $list; do						# Loop door de lijst
 	$2 $i							# Voer het meegegeven commando op alle elementen uit
@@ -10,6 +10,4 @@ for i in $list; do						# Loop door de lijst
 	else
 		echo "$2" "$i" ::::::: failed >> logfile.txt	# Anders is het commando mislukt.
 	fi							# Eindig if-statement
-done
-								# Eindig for-loop
-								
+done								# Eindig for-loop
