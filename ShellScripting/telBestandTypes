@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /usr/bin/env bash 
 
 # Maak 6 counters aan die allen gebruikt kunnen worden voor 1 bestandstype
 counter2=0

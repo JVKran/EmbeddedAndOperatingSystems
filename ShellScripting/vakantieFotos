@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
 
 mkdir -p Afbeeldingen/Vakantie 					# Maak de mappen Afbeeldingen/Vakantie aan als deze niet bestaan
 list="$(find "$1" -regex ".*\.\(jpg\|png\)" | grep vakantie)" 	# Zoek alle bestanden waarvan de bestandsnaam .jpg en .png bevat en grep vervolgens op het woord 'vakantie'

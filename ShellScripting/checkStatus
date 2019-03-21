@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
 
 touch logfile.txt						# Maak een logbestand aan
 echo "Statussen van commando's: " > logfile.txt			# Leeg het logbestand

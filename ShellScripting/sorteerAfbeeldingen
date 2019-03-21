@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
 
 mkdir -p Afbeeldingen 				# Maak directory Afbeeldingen aan als deze niet bestaat
 list="$(find "$1" -regex ".*\.\(jpg\|png\)")"	# Zoek naar alle bestanden waarvan de bestandsnaam eindigt op .jpg of .png

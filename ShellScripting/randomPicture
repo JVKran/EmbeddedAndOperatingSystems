@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
 
 list="$(ls $1)"								# Maak een lijst aan met alle bestanden in de opgegeven directory
 length="$(find $1 -maxdepth 1 -type f -not -name 't_*' | wc -l)"	# Tel hoeveel bestanden er zich bevinden in de opgegeven map

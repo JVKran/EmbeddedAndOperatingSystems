@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
 
 list="$(find "$1" -regex ".*jpg")"				# Maak een lijst met alle bestanden waarvan de bestandsnaam eindigt op .jpg
 					

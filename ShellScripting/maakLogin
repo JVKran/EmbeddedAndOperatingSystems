@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
 
 touch $1.txt					# Maak bestand aan met meegegeven bestandsnaam
 read -p "Gebruikersnaam: " username		# Vraag om de gebruikersnaam en sla deze op in $username
