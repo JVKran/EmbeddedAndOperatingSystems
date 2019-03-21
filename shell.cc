@@ -1,5 +1,3 @@
-// Opdracht voltooid
-
 #include "shell.hh"
 #include <string>
 #include <iostream>
@@ -59,6 +57,7 @@ int main(){
 }
 
 void new_file() {
+	// Gebruik als "new_file", geef bestandsnaam op, geen inhoud "Hoi, ik ben Klaas" op
 	cout << "Filename: ";
 	string file;
 	getline(cin, file);
@@ -68,12 +67,12 @@ void new_file() {
 	getline(cin, con);
 	const char* content = con.c_str();
 	int sz;
-	int fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	int fd = creat(filename, 0644);
 	if(fd < 0){
 		perror(" r1");
 		exit(1);
 	}
-	syscall(SYS_write(), fd, content, strlen(content));
+	sz = write(fd, content, strlen(content));
 	close(fd);
 	cout << prompt;
 }
@@ -120,8 +119,8 @@ void find(){
         int exit_status;
         wait(&exit_status);
     }
-    sleep(1);
-   cout << prompt;
+sleep(1);
+cout << prompt;
 }
 
 void python(){
