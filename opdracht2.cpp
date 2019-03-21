@@ -1,4 +1,4 @@
-// Opdracht voltooid
+// Opdracht voltooid 
 
 #include <iostream>
 #include <fstream>

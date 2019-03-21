@@ -1,4 +1,4 @@
-/* Opdracht voltooid
+/* Opdracht voltooid 
  * Bij PPC werken we met C++17 zodat onder andere stoi kan werken.
  * Om de code zo te compileren moet men het volgende doen:
  *      g++ test.cpp -o test -std=c++17
